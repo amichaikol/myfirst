@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="testexercise.css">
+    <script type = "text/javascript" src = "testexercise.js"></script>
+    <title>Student details</title>
+  </head>
+  <body onload="initiateForm()" dir="rtl">
+    <div>
+      <p>בדיקת חבילה</p>
+    </div>    
+    <form >
+      <ul>
+         <li>
+           <label for="fname">שיחות:</label>
+           <input type="text" id="messeges" name="first_name" value="" required>
+           <div id="fname_err" class="emsg"></div>
+         </li>
+         <li>
+            <label for="lname">ג'יגה:</label>
+            <input type="text" id="giga" name="last_name" value="" required>
+            <div id="lname_err" class="emsg"></div>
+          </li>   
+          <li>
+          <label for="lname">sms:</label>
+          <input type="text" id="sms" name="last_name" value="" required>
+          <div id="lname_err" class="emsg"></div>
+        </li>       
+         <li class="button">
+            <button type="submit" id="submitForm">שמור</button>   
+            <button type="button" id="delete">נקה טופס</button>          
+          </li>         
+        </ul>
+    </form>  
+    <div id="planA" class="results">
+          חבילה א
+    </div>  
+    <div id="planB" class="results">
+        חבילה ב
+    </div> 
+    <div id="planC" class="results">
+        חבילה ג
+    </div>     
+  </body>
+</html>
