@@ -1,5 +1,4 @@
 let rectangles = [];
-let qorder = 1
 
 class Rectangle {
     constructor(x,y,width, height, color) {
@@ -28,7 +27,8 @@ class FilledRectangle extends Rectangle {
         this.ctx.fillRect(this.x, this.y, this.width, this.height);    
     }
 }
-function restartArray(){
+function initPage(){
+    console.log("initPage");
     let colors = ["#184CE8", "#1FD1C5", "#A9B3D8", "#3C4874"];
     let rectsCount = 3;
     let maxWidth = 120;
@@ -37,37 +37,31 @@ function restartArray(){
     let startY = 20;
     let sizeGap = (maxWidth - minWidth) / rectsCount;
     for (let i = 0; i < rectsCount; i++){
-        rectangles.unshift(
+        rectangles.push(
             new FilledRectangle(
                 startX + i*sizeGap/2,
                 startY + i*sizeGap/2,
                 maxWidth - i*sizeGap,
                 maxWidth - i*sizeGap,
-                // rgb(Math.floor(Math.random() * 255)+1, Math.floor(Math.random() * 255)+1, Math.floor(Math.random() * 255)+1)
                 colors[i]
             )
         );
     }
 
 }
-function initPage(){
-    console.log("initPage");
-    restartArray()
-}
 
-function drawRects(change){
-    if (qorder === -1){
+function drawRects(){
+    let queue = true;
+    if (queue){
         //Draw queue order
-        qorder = change*qorder
         while (rectangles.length > 0){
             rectangles.shift().draw();
         }
     }else{
         //Draw stack order
-        qorder = change*qorder
         while (rectangles.length > 0){
             rectangles.pop().draw();
         }
     }
-    restartArray()
+
 }
