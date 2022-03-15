@@ -1,19 +1,38 @@
-$(document).ready(function(){
-    $("form").submit(function(event){
-        console.log("form submitted");
-        event.preventDefault();
-        student = {
-            fname: $("#fname").val(),            
-            lname: $("#lname").val(),
-            mail: $("#studentEmail").val    ()
-        };
-        console.log(student);
-        addStudent(student);
-    });
-});
+// $(document).ready(function(){
+//     $("form").submit(function(event){
+//         console.log("form submitted");
+//         event.preventDefault();
+//         student = {
+//             fname: $("#fname").val(),            
+//             lname: $("#lname").val(),
+//             mail: $("#studentEmail").val    ()
+//         };
+//         console.log(student);
+//         addStudent(student);
+//     });
+// });
 
-function addStudent(student){
-    console.log("addStudent", student);
+function coinsSet(){
+    $(document).ready(function(){
+        $.ajax({
+            url: "https://api.coingecko.com/api/v3/coins/list",
+            type: 'GET',
+            success: function(result) {
+                console.log(result)
+                for (i=0; i<100; i++){
+                    coin = {
+                        id: result[i].id,            
+                        symbol: result[i].symbol
+                    };
+                    addCoin(coin);
+                    showCoin(coin);
+                }},
+            error: function(error){
+                console.log(error)
+            }})})}
+
+function addCoin(coin){
+    console.log("addcoin", coin);
     //Find the grid row with querySelectorAll
     let rows = document.querySelectorAll(".row");
     console.log(rows.length);
@@ -35,4 +54,5 @@ function addStudent(student){
     newimage.classList.add("card-img-top");
     newCrad.appendChild(newimage);
     theCol.appendChild(newCrad);
+    document.getElementById("coinlist").appendChild(theCol);
 }

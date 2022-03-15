@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Cryptonite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
@@ -10,58 +11,51 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet"/>    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/bootstrap-cards_ex1.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="coins.js"></script>
+    <script src="coins.css"></script>
 </head>
-<body>
-  <h1>Bootstrap cards in a grid</h1>
+<body onload="coinsSet()">
+  <h1 style="text-align: center;">Cryptonite</h1>
   <div class="container">
     <div class="row">
-      <div class="col-12 mt-4">
-        <form action="#" id="studentForm" class="mb-3">
-          <div class="form-group">
-            <label for="fname">First name</label>
-            <input type="input" class="form-control" id="fname" required>
-          </div>
-          <div class="form-group">
-            <label for="lname">Last name</label>
-            <input type="input" class="form-control" id="lname" required>
-          </div>
-          <div class="form-group">
-            <label for="info">Info</label>
-            <input type="input" class="form-control" id="info" required>
-          </div>
-          <div class="form-group mb-1">
-            <label for="studentEmail">Email address</label>
-            <input type="email" class="form-control" id="studentEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
-            <small id="emailHelp" class="form-text text-muted"></small>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <button id="search" class="btn btn-primary">Search</button>
-          <input type="input" class="input-sm" id="searchStr">
-        </form>     
-      </div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+    <div class="row">
+      <div class="col-2">home</div>
+      <div class="col-2">live reports</div>
+      <div class="col-2">about</div>
+      <div class="col-2"></div>
+      <div class="col-2">search</div>
+      <div class="col-2">search</div>
     </div>
-      <div class="row">
-<!--         <div class="col-4 d-flex align-self-stretch">
+      <div id="coinsgrid" class="row">
+        
+        <!-- <div class="col-4 d-flex align-self-stretch">
           <div class="card w-100" >
-            <img src="images/sample.svg" class="card-img-top" alt="...">
-            <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title">Michal Levi</h5>
-                <p class="card-text">Michal Levi lives in Tel Aviv. She is now taking the John Bryce fullstack course.</p>
-                <a href="#" class="btn btn-primary mt-auto">View Profile</a>
+            <h1 class="card-header">'+coins[i].symbol+'</h1>
+            <div class="card-body d-flex flex-column">
+               <h5 class="card-title">'+coins[i].id+'</h5>
+               <div class="row">
+                <a href="#" class="btn btn-primary mt-auto col-4">View Profile</a>
+                <p class="col-8">testing</p>
+              </div>
             </div>
           </div>        
         </div>
         <div class="col-4 d-flex align-self-stretch">
-          <div class="card w-100">
-            <img src="images/sample.svg" class="card-img-top" alt="...">
-            <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title">Uri Yoffe</h5>
-                <p class="card-text">Uri Yoffe lives in Natania. He is now taking the John Bryce fullstack course.</p>
+          <div class="card w-100" >
+            <h1 class="card-header">'+coins[i].symbol+'</h1>
+            <div class="card-body d-flex flex-column">
+               <h5 class="card-title">'+coins[i].id+'</h5>
                 <a href="#" class="btn btn-primary mt-auto">View Profile</a>
             </div>
           </div>        
-        </div>
- -->  </div>
+        </div> -->
+  </div>
+</div>
+</div>
 </body>
 </html>

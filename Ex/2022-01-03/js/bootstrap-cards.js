@@ -47,7 +47,7 @@ class LinkedList {
     }
 }
 
-let students = new LinkedList();
+let coins = new LinkedList();
 
 $(document).ready(function(){
     $("form").submit(function(event){
@@ -63,16 +63,43 @@ $(document).ready(function(){
     });
 });
 
-function addStudent(student){
-    if (students.isEmpty()){
-        students.setFirst(new ListNode(student));
-    }else{
-        students.add(new ListNode(student));
-    }
-    students.print();
+document.getElementById("test").addEventListener("load", coins);
+
+function coinsSet(){
+    $(document).ready(function(){
+        $.ajax({
+            url: "https://api.coingecko.com/api/v3/coins/list",
+            type: 'GET',
+            success: function(result) {
+                console.log(result)
+                for (i=0; i<100; i++){
+                    coin = {
+                        id: result[i].id,            
+                        symbol: result[i].symbol
+                    };
+                    addCoin(coin);
+                    showCoin(coin);
+                }
+
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+    })
+    
 }
 
-function showStudent(student){
+function addCoin(coin){
+    if (coins.isEmpty()){
+        coins.setFirst(new ListNode(coin));
+    }else{
+        coins.add(new ListNode(coin));
+    }
+    coins.print();
+}
+
+function showCoin(coin){
 
     $(".row").append("<div class='col-4 d-flex align-self-stretch'></div>");
     
@@ -87,8 +114,7 @@ function showStudent(student){
 
 
     $(".card-body:last").append(
-        `<h5 class='card-title'>${student.fname} ${student.lname}</h5>`, 
-        `<p class='card-text'>${student.info}</p>`,
+        `<h5 class='card-title'>${coin.id} ${coin.symbol}</h5>`, 
         `<a class='btn btn-primary mt-auto'>VIEW PROFILE</a>`
         );
 }
