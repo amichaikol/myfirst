@@ -1,50 +1,7 @@
-
 let coins = []
 let clicked = []
 let coll = document.getElementsByClassName("collapsible");
-let whattoremove = ''
-let cardlist = []
-
-function about(){
-    document.getElementById('coinsgrid').innerHTML = '<div id="coinsgrid" style="color: blue; text-align: center;" class="row"><h2 class="col-lg-3 col-sm-12">Name:<br>Amichai Kolberg<br>Age: 36<br>City: Haifa</h2><div class="col-lg-6 col-sm-12"><img class="center" src="ami.png" width="300px" height="300px"></div><h3 style="color: blue;" class="col-lg-3 col-sm-12">About the project: The project shows the updated value of many different currencies from around the world, including virtual currencies</h3></div>' 
-}
-
-function reset(){
-    document.getElementById('coinsgrid').innerHTML = '<div id="coinsgrid" class="row">'
-    coinsSet()
-}
-let cli = 0
-function searching(){
-    loadtime()
-    let ggg = $("#searcher").val()
-    console.log()
-    for(i=0; i<100; i++){
-        if(coins[i].id==ggg){
-           document.getElementById('coinsgrid').innerHTML = '<div id="coinsgrid" class="row">'
-           $("#coinsgrid").append('<div style="margin-bottom:20px;" class=" col-lg-4 col-md-4 col-sm-12 d-flex align-self-stretch"><div class="card w-100" ><div class="row"><h3 class="card-header col-9">'+coins[i].symbol+'</h3><label class="switch col-3"><input type="checkbox" onclick="addremovecard('+coins[i].id+')"><span class="slider round"></span></label><div class="card-body d-flex flex-column"><h5 class="card-title">'+coins[i].id+'</h5><div class="row"><button type="button" class="btn btn-primary  col-5 collapsible ">More Info</button><div id="'+coins[i].id+'" style="display:none;" class="col-7"></div></div> </div></div></div>');
-           collapsing(i, coins) 
-           finishedload() 
-           return
-        }
-    } alert("coin not found")
-    finishedload() 
-}
-
-function addremovecard(car){
-    // let text = car
-    // let hhh = text.slice(4, length-7);
-    for(i=0;i<5;i++){
-        if (cardlist[i] === car){
-            cardlist.splice(i, 1);
-            return
-        }
-        // if (cardlist.length == 5){
-            // $("#myModal").removeClass('modal fade')
-        // }
-    }
-    cardlist.push(car)
-    console.log(cardlist)
-}
+whattoremove = ''
 
 function loadtime(){
     myTimeout = setTimeout(timeload, 500);
@@ -58,12 +15,11 @@ function finishedload(){
     clearTimeout(myTimeout);
 }
 
-
-
 function coinsSet(){
     $(document).ready(function(){
         loadtime()
         $.ajax({
+            // I have noticed that the url: "https://api.coingecko.com/api/v3/coins/list" gets me a different list then the example
             url: "https://api.coingecko.com/api/v3/coins",
             type: 'GET',
             success: function(result) {
@@ -78,7 +34,8 @@ function coinsSet(){
 }})})
 function secondF(){
 $(document).ready(function(){
-        $.ajax({
+    $.ajax({
+        // I have noticed that the url: "https://api.coingecko.com/api/v3/coins/list" gets me a different list then the example
         url: "https://api.coingecko.com/api/v3/coins/list",
         type: 'GET',
         success: function(others) {
@@ -100,7 +57,7 @@ function creatCoins(creations){
         };
         coins.push(coin)
         clicked.push(0)
-        $("#coinsgrid").append('<div style="margin-bottom:20px;" class=" col-lg-4 col-md-4 col-sm-12 d-flex align-self-stretch"><div class="card w-100" ><div class="row"><h3 class="card-header col-9">'+coins[i].symbol+'</h3><label class="switch col-3"><input type="checkbox" onclick="addremovecard('+coins[i].id+')"><span class="slider round"></span></label><div class="card-body d-flex flex-column"><h5 class="card-title">'+coins[i].id+'</h5><div class="row"><button type="button" class="btn btn-primary  col-5 collapsible ">More Info</button><div id="'+coins[i].id+'" style="display:none;" class="col-7"></div></div> </div></div></div>'); 
+        $("#coinsgrid").append('<div class=" col-lg-4 col-md-4 col-sm-12 d-flex align-self-stretch"><div class="card w-100" ><h3 class="card-header">'+coins[i].symbol+'</h3><div class="card-body d-flex flex-column"><h5 class="card-title">'+coins[i].id+'</h5><div class="row"><button type="button" class="btn btn-primary col-5 collapsible ">More Info</button><div id:"'+coins[i].id+'" style="display:none;" class="col-7"></div></div> </div></div></div>'); 
         collapsing(i, coins)                                             
     }
 
